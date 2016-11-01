@@ -27,7 +27,7 @@ void ofApp::draw(){
     ofSetColor(ofColor::black);
     float bpm = btrack.getEstimatedBPM();
     ofDrawBitmapString("Estimated BPM: " + ofToString(bpm, 1), 30, 50);
-    ofDrawBitmapString("Confidence: " + ofToString(btrack.getConfidence(), 2), 30, 75);
+    ofDrawBitmapString("Confidence: " + ofToString(btrack.getConfidence(), 2), 30, 75); // confidence is an experimental feature at this moment
     
 
     // Beat
