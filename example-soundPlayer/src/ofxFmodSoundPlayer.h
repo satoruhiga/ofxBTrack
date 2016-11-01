@@ -18,7 +18,6 @@ class ofxFmodSoundPlayer : public ofFmodSoundPlayer
 {
     public:
     ofxFmodSoundPlayer();
-//    ~ofxFmodSoundPlayer();
     
     void play();
     

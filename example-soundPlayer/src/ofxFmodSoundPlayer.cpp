@@ -1,6 +1,6 @@
 //
 //  ofxFmodSoundPlayer.cpp
-//  TurntableSimulator
+//
 //
 //  Created by Nao Tokui on 2015/09/02.
 //
