@@ -8,5 +8,5 @@ btrack~: Max/MSP external
 https://github.com/naotokui/btrack_external 
 
 ### notice  
-This is an addon for beat tracking, not for onset detection! Each occurance of sudden attack/inpulse of sound (onset) doesn't matter in this case. Instead, the algorighm tries to find a constant beat and track the location of each beat in coming audio. 
+This is an addon for beat tracking, not for onset detection! Each occurance of sudden attack/inpulse of sound (onset) doesn't matter in this case. Instead, the algorighm tries to find a constant beat and track the location of each beat in incoming audio signal. 
 
