@@ -7,7 +7,7 @@ void ofApp::setup(){
     speedSlider.addListener(this, &ofApp::onSpeedliderChanged);
     
     // Load song file.
-    player.load("dnb-loop-152.mp3");
+    player.load("dnb-loop-152.mp3"); // by AdRem1 - CC lisense - http://freesound.org/people/AdRem1/sounds/338951/
     player.play();
     player.setLoop(true);
     playbackBPM = originalBPM; // this song is known to be 120BPM.
