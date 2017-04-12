@@ -47,13 +47,41 @@ void  ofxBTrack::setConfidentThreshold(float thresh){
 
 void ofxBTrack::audioIn(float *input, int bufferSize, int nChannels)
 {
-    b.processAudioFrame((double *)input);
-    
-    if (b.beatDueInCurrentFrame()){
-        hasBeat_ = true;
-        
-        //FIXME: need to figure out how to calculate properly
-        confidence = b.getLatestCumulativeScoreValue() / (float) frameSize * 10000.0;
-    }
-    bpm_ = b.getCurrentTempoEstimate();    
+	{
+		float* src = input;
+		
+		for (int i = 0; i < bufferSize; i++)
+		{
+			float avg = 0;
+			
+			for (int n = 0; n < nChannels; n++)
+			{
+				avg += *src++;
+			}
+			
+			avg /= nChannels;
+			
+			buffer.push_back(avg);
+		}
+	}
+	
+	processBuffer.resize(frameSize);
+	
+	while (buffer.size() > frameSize)
+	{
+		for (int i = 0; i < frameSize; i++)
+			processBuffer[i] = buffer[i];
+		
+		buffer.erase(buffer.begin(), buffer.begin() + frameSize);
+		
+		b.processAudioFrame(processBuffer.data());
+		
+		if (b.beatDueInCurrentFrame()){
+			hasBeat_ = true;
+			
+			//FIXME: need to figure out how to calculate properly
+			confidence = b.getLatestCumulativeScoreValue() / (float) frameSize * 10000.0;
+		}
+		bpm_ = b.getCurrentTempoEstimate();    
+	}
 }

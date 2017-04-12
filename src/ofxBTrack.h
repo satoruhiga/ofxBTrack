@@ -12,6 +12,9 @@
 #include <stdio.h>
 #include "BTrack.h"
 
+#include <deque>
+#include <vector>
+
 class ofxBTrack {
     
     public:
@@ -36,7 +39,10 @@ class ofxBTrack {
         void audioIn(float *input, int bufferSize, int nChannels);
 
     private:
-    
+		
+		std::deque<double> buffer;
+		std::vector<double> processBuffer;
+		
         BTrack b;
         int frameSize;
         float confidence;
